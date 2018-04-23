@@ -1,0 +1,19 @@
+@import "../node_modules/tachyons/css/tachyons.css";
+@import "../node_modules/ipfs-css/ipfs.css";
+
+.grow2 {
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+
+.grow2:active,
+.grow2:hover,
+.grow2:focus {
+  transform: scale(1.05);
+}
+
+.shadow-6 {
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
+}

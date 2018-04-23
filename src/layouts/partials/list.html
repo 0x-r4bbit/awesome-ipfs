@@ -1,0 +1,83 @@
+{{ define "text" }}
+<p class="f6 lh-copy mw5 mt2 mb0 mid-gray">
+  {{- . -}}
+</p>
+{{ end }}
+
+<div class="ma2 dn" id="search">
+  <input
+    placeholder="Find your awesome app..."
+    class="input-reset outline-0 grow2 bn pa3 mb2 db w-100 center shadow-4 dn"
+    type="text" />
+</div>
+
+<main class="mv4 flex flex-wrap justify-between" >
+  {{ range (sort . "Params.index") -}}
+    <article data-ref="{{ .Params.index }}" class="Card shadow-6 grow2 br1 dark-gray b--black-10 flex-grow-1 ma2">
+      {{ $cat := index .Params.categories 0 }}
+      <div style="background-color: {{ (index .Site.Data.categories $cat).color }}" class="bg-navy br1 br--top white pv1 ph2 ph3-ns f7 b w-100">
+        {{ humanize $cat }}
+      </div>
+
+      <div class="pa2 ph3-ns pb3-ns">
+        <div class="dt w-100 mt1">
+          <div class="dtc">
+            <a target="_blank" class="no-underline charcoal" href="{{ .Params.link }}">
+              <h1 class="f5 mw5 f4-ns mv0">{{- .Title -}}</h1>
+            </a>
+          </div>
+        </div>
+
+        {{- if isset .Params "date" -}}
+          {{ template  "text" .Date.Format "January 2, 2006" }}
+        {{- end -}}
+
+        {{- if isset .Params "description" -}}
+          {{ template  "text" .Params.description }}
+        {{- end -}}
+
+        {{- if isset .Params "tags" -}}
+        <div class="pt2 flex flex-wrap" {...props} >
+          {{- range index .Params.tags -}}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="no-underline dib dark-gray f6 br2 mr1 mb1 pa1 bg-light-gray">
+              {{- . -}}
+            </a>
+          {{- end -}}
+        </div>
+        {{- end -}}
+
+        {{- if isset .Params "youtube" -}}
+        <div class="relative mt2" style="height: 0; padding-bottom: 56.25%">
+          <iframe class="absolute top-0 left-0 w-100 h-100"
+            type="text/html"
+            src="https://www.youtube.com/embed/{{ .Params.youtube }}"
+            allowfullscreen
+            frameborder="0"></iframe>
+        </div>
+        {{ end }}
+
+        <div class="flex pt2 align-center justify-begin">
+          {{- if isset .Params "link" -}}
+          <a href="{{ .Params.link }}" target="_blank">
+            {{ partial "icons/globe.svg" "Website" }}
+          </a>
+          {{- end -}}
+
+          {{- if isset .Params "source" -}}
+          <a href="{{ .Params.source }}" target="_blank">
+            {{ partial "icons/code.svg" "Source Code" }}
+          </a>
+          {{- end -}}
+
+          {{- if isset .Params "demo" -}}
+          <a href="{{ .Params.demo }}" target="_blank">
+            {{ partial "icons/flask.svg" "Demo" }}
+          </a>
+          {{- end -}}
+        </div>
+      </div>
+    </article>
+  {{ end }}
+</main>
+
+{{ partial "search_index" }}
