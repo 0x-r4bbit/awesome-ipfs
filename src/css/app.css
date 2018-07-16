@@ -2,7 +2,7 @@
 @import "../../node_modules/ipfs-css/ipfs.css";
 
 body {
-  background: url('../starfield.png') no-repeat;
+  background: url('./starfield.png') no-repeat;
   background-size: cover;
   background-attachment: fixed;  
 }
