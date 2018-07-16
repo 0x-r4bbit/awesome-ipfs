@@ -58,20 +58,20 @@
 
         <div class="flex pt2 align-center justify-begin">
           {{- if isset .Params "link" -}}
-          <a href="{{ .Params.link }}" target="_blank">
-            {{ partial "icons/globe.svg" "Website" }}
+          <a href="{{ .Params.link }}" target="_blank" alt="Website" title="Website">
+            {{ partial "icons/globe.svg" }}
           </a>
           {{- end -}}
 
           {{- if isset .Params "source" -}}
-          <a href="{{ .Params.source }}" target="_blank">
-            {{ partial "icons/code.svg" "Source Code" }}
+          <a href="{{ .Params.source }}" target="_blank" alt="Source Code" title="Source Code">
+            {{ partial "icons/code.svg" }}
           </a>
           {{- end -}}
 
           {{- if isset .Params "demo" -}}
-          <a href="{{ .Params.demo }}" target="_blank">
-            {{ partial "icons/flask.svg" "Demo" }}
+          <a href="{{ .Params.demo }}" target="_blank" alt="Demo" title="Demo">
+            {{ partial "icons/flask.svg" }}
           </a>
           {{- end -}}
         </div>
