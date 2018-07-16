@@ -1,6 +1,12 @@
 @import "../../node_modules/tachyons/css/tachyons.css";
 @import "../../node_modules/ipfs-css/ipfs.css";
 
+body {
+  background: url('../starfield.png') no-repeat;
+  background-size: cover;
+  background-attachment: fixed;  
+}
+
 .grow2 {
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;

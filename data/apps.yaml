@@ -1,6 +1,6 @@
 title: Apps
 singular: App
-color: '#3498db'
+color: aqua
 description: 'Applications built with IPFS or with functionality that uses IPFS'
 content:
   - name: akasha

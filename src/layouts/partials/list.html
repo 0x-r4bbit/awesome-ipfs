@@ -13,9 +13,9 @@
 
 <main class="mv4 flex flex-wrap justify-between" >
   {{ range (sort . "Params.index") -}}
-    <article data-ref="{{ .Params.index }}" class="Card shadow-6 grow2 br1 dark-gray b--black-10 flex-grow-1 ma2">
+    <article data-ref="{{ .Params.index }}" class="Card bg-white shadow-6 grow2 br1 dark-gray b--black-10 flex-grow-1 ma2">
       {{ $cat := index .Params.categories 0 }}
-      <div style="background-color: {{ (index .Site.Data.categories $cat).color }}" class="bg-navy br1 br--top white pv1 ph2 ph3-ns f7 b w-100">
+      <div class="bg-navy bg-{{ (index .Site.Data.categories $cat).color }} br1 br--top white pv1 ph2 ph3-ns f7 b w-100">
         {{ humanize $cat }}
       </div>
 

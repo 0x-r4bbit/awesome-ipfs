@@ -1,6 +1,6 @@
 title: Articles
 singular: Article
-color: '#34495e'
+color: navy-muted
 description: Articles about the decentralized web and IPFS.
 content:
   - name: Decentralized & Distributed Edge Computing Comes to Computes.io

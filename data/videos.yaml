@@ -1,6 +1,6 @@
 title: Videos
 singular: Video
-color: '#e74c3c'
+color: red-muted
 description: 'Videos about IPFS'
 content:
   - name: IPFS Alpha - Why we must redistribute the web

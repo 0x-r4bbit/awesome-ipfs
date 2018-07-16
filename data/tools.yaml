@@ -1,6 +1,6 @@
 title: Tools
 singular: Tool
-color: '#f1c40f'
+color: yellow-muted
 description: Tools built on the top of IPFS.
 content:
 - name: cachewarmer
