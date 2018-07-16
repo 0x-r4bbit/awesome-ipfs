@@ -20,6 +20,7 @@ body {
   transform: scale(1.05);
 }
 
-.shadow-6 {
-  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.1);
+.focus-outline:focus {
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(201, 210, 215, .4);
 }

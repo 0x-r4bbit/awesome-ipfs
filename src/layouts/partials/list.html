@@ -7,15 +7,16 @@
 <div class="ma2 dn" id="search">
   <input
     placeholder="Find your awesome app..."
-    class="input-reset outline-0 grow2 bn pa3 mb2 db w-100 center shadow-4 dn"
+    class="input-reset outline-0 bn pa3 mb2 db w-100 center focus-outline dn"
     type="text" />
 </div>
 
 <main class="mv4 flex flex-wrap justify-between" >
   {{ range (sort . "Params.index") -}}
-    <article data-ref="{{ .Params.index }}" class="Card bg-white shadow-6 grow2 br1 dark-gray b--black-10 flex-grow-1 ma2">
+    <article data-ref="{{ .Params.index }}" class="Card bg-white shadow-4 grow2 br1 dark-gray b--black-10 flex-grow-1 ma2">
       {{ $cat := index .Params.categories 0 }}
-      <div class="bg-navy bg-{{ (index .Site.Data.categories $cat).color }} br1 br--top white pv1 ph2 ph3-ns f7 b w-100">
+      {{ $color := (index .Site.Data.categories $cat).color }}
+      <div class="bg-navy ttu montserrat bg-{{ $color }} br1 br--top white pv1 ph2 ph3-ns f7 b w-100">
         {{ humanize $cat }}
       </div>
 
@@ -39,7 +40,7 @@
         {{- if isset .Params "tags" -}}
         <div class="pt2 flex flex-wrap" {...props} >
           {{- range index .Params.tags -}}
-            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="no-underline dib dark-gray f6 br2 mr1 mb1 pa1 bg-light-gray">
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="monospace no-underline dib dark-gray f7 br2 mr1 mb1 pa1 bg-light-gray">
               {{- . -}}
             </a>
           {{- end -}}
@@ -59,19 +60,19 @@
         <div class="flex pt2 align-center justify-begin">
           {{- if isset .Params "link" -}}
           <a href="{{ .Params.link }}" target="_blank" alt="Website" title="Website">
-            {{ partial "icons/globe.svg" }}
+            {{ partial "icons/globe.svg" $color }}
           </a>
           {{- end -}}
 
           {{- if isset .Params "source" -}}
           <a href="{{ .Params.source }}" target="_blank" alt="Source Code" title="Source Code">
-            {{ partial "icons/code.svg" }}
+            {{ partial "icons/code.svg" $color }}
           </a>
           {{- end -}}
 
           {{- if isset .Params "demo" -}}
           <a href="{{ .Params.demo }}" target="_blank" alt="Demo" title="Demo">
-            {{ partial "icons/flask.svg" }}
+            {{ partial "icons/flask.svg" $color }}
           </a>
           {{- end -}}
         </div>
