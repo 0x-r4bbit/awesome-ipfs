@@ -1,21 +1,23 @@
 const fs = require('fs')
 const path = require('path')
 const yaml = require('node-yaml')
-const { sortInv, sortAbc } = require('./utils')
+const { sortAbc } = require('./utils')
 const dataDir = path.join(__dirname, '../data')
+
+const trimIfExists = (str) => str ? str.trim() : undefined
 
 const files = fs.readdirSync(dataDir)
   .map(file => path.join(dataDir, file))
   .map(file => yaml.readSync(file))
-  .sort((a, b) => sortAbc(a.title, b.title))
-  .map(cat => {
-    if (cat.title === 'Articles') {
-      cat.content = cat.content.sort((a, b) => sortInv(a.date, b.date))
-    } else {
-      cat.content = cat.content.sort((a, b) => sortAbc(a.name, b.name))
-    }
+  .map(file => {
+    file.content = file.content.map(({ title, description, ...file }) => ({
+      title: trimIfExists(title),
+      description: trimIfExists(description),
+      ...file
+    }))
 
-    return cat
+    return file
   })
+  .sort((a, b) => sortAbc(a.title, b.title))
 
 module.exports = files
