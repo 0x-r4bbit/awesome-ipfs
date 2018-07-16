@@ -10,15 +10,24 @@ const toc = files.map(cat => `- [${cat.title}](#${slugify(cat.title)})`).join('\
 const sections = files.map(category => {
   const content = category.content.map(item => {
     let block = '- '
+    let mainUrl = ''
+
+    if (item.url) {
+      mainUrl = item.url
+    } else if (item.source) {
+      mainUrl = item.source
+    } else if (item.demo) {
+      mainUrl = item.demo
+    }
 
     if (item.date) block += item.date + ': '
-    block += `[${item.name}](${item.url}) `
+    block += `[${item.name}](${mainUrl}) `
     if (item.description) block += `- ${item.description.trim()}`
-    if (item.demo) {
+    if (item.demo && mainUrl !== item.demo) {
       if (!item.description) block += '-'
       block += ` [Demo](${item.demo})`
     }
-    if (item.source) {
+    if (item.source && mainUrl !== item.source) {
       block += ` [Source](${item.source})`
     }
 

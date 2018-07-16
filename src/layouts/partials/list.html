@@ -22,7 +22,7 @@
       <div class="pa2 ph3-ns pb3-ns">
         <div class="dt w-100 mt1">
           <div class="dtc">
-            <a target="_blank" class="no-underline charcoal" href="{{ .Params.link }}">
+            <a target="_blank" class="no-underline charcoal" href="{{ if .Params.link }}{{ .Params.link }}{{ else if .Params.source }}{{ .Params.source }}{{ else if .Params.demo }}{{ .Params.demo }}{{ end }}">
               <h1 class="f5 mw5 f4-ns mv0">{{- .Title -}}</h1>
             </a>
           </div>
