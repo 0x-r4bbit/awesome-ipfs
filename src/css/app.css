@@ -1,5 +1,5 @@
-@import "../node_modules/tachyons/css/tachyons.css";
-@import "../node_modules/ipfs-css/ipfs.css";
+@import "../../node_modules/tachyons/css/tachyons.css";
+@import "../../node_modules/ipfs-css/ipfs.css";
 
 .grow2 {
   -moz-osx-font-smoothing: grayscale;
